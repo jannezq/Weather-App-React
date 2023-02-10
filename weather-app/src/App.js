@@ -1,4 +1,5 @@
 import "./App.css";
+import "./components/WeatherCss.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import WeatherSearch from "./components/WeatherSearch";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -13,7 +14,6 @@ function App() {
           <Route path="/weather" element={<DisplayArea />} />
         </Routes>
       </BrowserRouter>
-      <WeatherSearch />
     </div>
   );
 }

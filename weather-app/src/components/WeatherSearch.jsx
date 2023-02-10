@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Container, Form } from "react-bootstrap";
+import { Container, Form, Jumbotron } from "react-bootstrap";
 import DisplayArea from "./DisplayArea";
 
 const WeatherSearch = () => {
@@ -18,9 +18,13 @@ const WeatherSearch = () => {
     e.preventDefault();
 
     try {
-      let response = await fetch(basepoint + locationArea + apiKey, {
-        method: "GET",
-      });
+      let response = await fetch(
+        basepoint + locationArea + apiKey + "&units=metric",
+        {
+          method: "GET",
+        }
+      );
+
       if (response.ok) {
         const rawWeatherData = await response.json();
         console.log(rawWeatherData);
@@ -38,22 +42,24 @@ const WeatherSearch = () => {
 
   return (
     <>
-      <Container>
-        <div className="searchBar">
-          <h2>Weather App</h2>
-          <Form onSubmit={fetchWeather}>
-            <Form.Control
-              type="search"
-              value={locationArea}
-              placeholder="Please enter city and press Enter~"
-              onChange={handleChange}
-            />
-          </Form>
-        </div>
-        {loading ? <></> : <DisplayArea info={weatherData} />}
+      <Jumbotron className="mainLanding" fluid>
+        <Container>
+          <div className="searchBar mb-5">
+            <h2>Weather App</h2>
+            <Form onSubmit={fetchWeather}>
+              <Form.Control
+                type="search"
+                value={locationArea}
+                placeholder="Please enter city and press Enter~"
+                onChange={handleChange}
+              />
+            </Form>
+          </div>
+          {loading ? <></> : <DisplayArea info={weatherData} />}
 
-        <div className="bottom-area"></div>
-      </Container>
+          <div className="bottom-area"></div>
+        </Container>
+      </Jumbotron>
     </>
   );
 };
