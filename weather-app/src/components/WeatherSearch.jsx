@@ -5,16 +5,18 @@ import DisplayArea from "./DisplayArea";
 const WeatherSearch = () => {
   const [weatherData, setWeatherData] = useState([]);
   const [locationArea, setLocationArea] = useState("");
+  const [loading, setLoading] = useState(true);
 
   const basepoint = `https://api.openweathermap.org/data/2.5/weather?q=`;
   const apiKey = ",&APPID=6934ba3e9b845ef11d371614239e858e";
 
   const handleChange = (e) => {
-    setLocationArea(e.target.value); //state = setQuery = input value✔️
+    setLocationArea(e.target.value);
   };
 
   const fetchWeather = async (e) => {
     e.preventDefault();
+
     try {
       let response = await fetch(basepoint + locationArea + apiKey, {
         method: "GET",
@@ -23,6 +25,7 @@ const WeatherSearch = () => {
         const rawWeatherData = await response.json();
         console.log(rawWeatherData);
         setWeatherData(rawWeatherData);
+        setLoading(false);
       } else {
         console.log("Error!!!");
       }
@@ -47,9 +50,9 @@ const WeatherSearch = () => {
             />
           </Form>
         </div>
+        {loading ? <></> : <DisplayArea info={weatherData} />}
 
-        <DisplayArea info={weatherData} />
-        {/* this is where I display the location searched */}
+        <div className="bottom-area"></div>
       </Container>
     </>
   );
