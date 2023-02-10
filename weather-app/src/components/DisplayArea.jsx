@@ -11,7 +11,7 @@ import {
 const DisplayArea = (props) => {
   return (
     <>
-      <Container>
+      <Container className="d-flex justify-content-center">
         <Row className="outer-container">
           <Col className="d-flex justify-content-center align-items-center">
             <div className="weather-container">

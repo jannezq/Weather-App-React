@@ -45,7 +45,7 @@ const WeatherSearch = () => {
       <Jumbotron className="mainLanding" fluid>
         <Container>
           <div className="searchBar mb-5">
-            <h2>Weather App</h2>
+            <h1 className="title-app mb-3">Weather App</h1>
             <Form onSubmit={fetchWeather}>
               <Form.Control
                 type="search"
