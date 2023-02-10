@@ -1,12 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Container, Form } from "react-bootstrap";
+import DisplayArea from "./DisplayArea";
 
 const WeatherSearch = () => {
-  const [weatherData, setWeatherData] = useState("");
+  const [weatherData, setWeatherData] = useState([]);
   const [locationArea, setLocationArea] = useState("");
 
   const basepoint = `https://api.openweathermap.org/data/2.5/weather?q=`;
   const apiKey = ",&APPID=6934ba3e9b845ef11d371614239e858e";
+
+  const handleChange = (e) => {
+    setLocationArea(e.target.value); //state = setQuery = input value✔️
+  };
 
   const fetchWeather = async (e) => {
     e.preventDefault();
@@ -26,10 +31,7 @@ const WeatherSearch = () => {
     }
   };
 
-  useEffect(() => {
-    fetchWeather();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  fetchWeather();
 
   return (
     <>
@@ -40,15 +42,14 @@ const WeatherSearch = () => {
             <Form.Control
               type="search"
               value={locationArea}
-              placeholder="enter city!"
-              onChange={(e) => {
-                setLocationArea(e.target.value);
-              }}
+              placeholder="Please enter city and press Enter~"
+              onChange={handleChange}
             />
           </Form>
         </div>
 
-        {/* <DisplayArea /> */}
+        <DisplayArea info={weatherData} />
+        {/* this is where I display the location searched */}
       </Container>
     </>
   );
