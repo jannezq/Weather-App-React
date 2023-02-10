@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { Container, Form, Jumbotron } from "react-bootstrap";
 import DisplayArea from "./DisplayArea";
-import WeeklyForeCast from "./WeeklyForecast";
+// import WeeklyForeCast from "./WeeklyForecast";
 
 const WeatherSearch = () => {
   const [weatherData, setWeatherData] = useState([]);
   const [locationArea, setLocationArea] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [isloading, setIsLoading] = useState(true);
 
   const basepoint = `https://api.openweathermap.org/data/2.5/weather?q=`;
-  const apiKey = ",&APPID=6934ba3e9b845ef11d371614239e858e";
+  const apiKey = ",&APPID=6af993cceb0d29ae03dc006dafe28c01";
 
   const handleChange = (e) => {
     setLocationArea(e.target.value);
@@ -30,7 +30,7 @@ const WeatherSearch = () => {
         const rawWeatherData = await response.json();
         console.log(rawWeatherData);
         setWeatherData(rawWeatherData);
-        setLoading(false);
+        setIsLoading(false);
       } else {
         console.log("Error!!!");
       }
@@ -56,7 +56,7 @@ const WeatherSearch = () => {
               />
             </Form>
           </div>
-          {loading ? <></> : <DisplayArea info={weatherData} />}
+          {isloading ? <></> : <DisplayArea info={weatherData} />}
           {/* {loading ? <></> : <WeeklyForeCast week={weatherData.coord} />} */}
         </Container>
       </Jumbotron>

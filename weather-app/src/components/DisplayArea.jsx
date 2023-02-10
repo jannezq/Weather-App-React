@@ -14,7 +14,7 @@ const DisplayArea = (props) => {
       <Container className="d-flex justify-content-center">
         <Row className="outer-container">
           <Col className="d-flex justify-content-center align-items-center">
-            <div className="weather-container">
+            <div className="weather-container d-flex ">
               <div className="p-4 weather-info text-left">
                 <h4>
                   {props.info.name} , {props.info.sys.country}
@@ -50,7 +50,6 @@ const DisplayArea = (props) => {
                   {props.info.wind.speed}m/s
                 </span>
               </div>
-              <div className="weather-img"></div>
             </div>
           </Col>
         </Row>

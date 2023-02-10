@@ -4,9 +4,6 @@
   background-size: cover;
 }
 
-.title-app {
-}
-
 .outer-container {
   height: 20vw;
   width: 40vw;
@@ -25,4 +22,13 @@
 
 .main-temp {
   font-size: 25px;
+}
+
+.weather-img {
+  width: 438px;
+  height: 20vh;
+}
+.weather-img img {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }

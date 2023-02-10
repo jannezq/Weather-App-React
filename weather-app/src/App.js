@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import WeatherSearch from "./components/WeatherSearch";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DisplayArea from "./components/DisplayArea";
-import WeeklyForeCast from "./components/WeeklyForecast";
+// import WeeklyForeCast from "./components/WeeklyForecast";
 
 function App() {
   return (
