@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Container, Form, Jumbotron } from "react-bootstrap";
 import DisplayArea from "./DisplayArea";
+import WeeklyForeCast from "./WeeklyForecast";
 
 const WeatherSearch = () => {
   const [weatherData, setWeatherData] = useState([]);
@@ -56,8 +57,7 @@ const WeatherSearch = () => {
             </Form>
           </div>
           {loading ? <></> : <DisplayArea info={weatherData} />}
-
-          <div className="bottom-area"></div>
+          {/* {loading ? <></> : <WeeklyForeCast week={weatherData.coord} />} */}
         </Container>
       </Jumbotron>
     </>
